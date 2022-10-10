@@ -3,7 +3,6 @@
 	<book>
 		<Title>Algorithms to Live By: The Computer Science of Human Decisions</Title>
 		<Author>Brian Christian</Author>
-    <Author>Tom Griffiths</Author>
 		<Brief>An exploration of how insights from computer algorithms can be applied to our everyday lives, helping to solve common decision-making problems</Brief>
 		<ISBN>9781627790369</ISBN>
 		<Pages>368</Pages>
@@ -11,7 +10,7 @@
 
 	<book>
 		<Title>The Gifts of Imperfection</Title>
-		<Author>Brené Brown</Author>
+		<Author>Brene Brown</Author>
 		<Brief>It's about vulnerability, courage, worthiness, and shame, shares ten guideposts on the power of engaging with the world from a place of worthiness</Brief>
 		<ISBN>9781592858491</ISBN>
 		<Pages>137</Pages>
