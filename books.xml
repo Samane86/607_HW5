@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table-of-books>
+	<book>
+		<Title>Algorithms to Live By: The Computer Science of Human Decisions</Title>
+		<Author>Brian Christian</Author>
+    <Author>Tom Griffiths</Author>
+		<Brief>An exploration of how insights from computer algorithms can be applied to our everyday lives, helping to solve common decision-making problems</Brief>
+		<ISBN>9781627790369</ISBN>
+		<Pages>368</Pages>
+	</book>
+
+	<book>
+		<Title>The Gifts of Imperfection</Title>
+		<Author>Brené Brown</Author>
+		<Brief>It's about vulnerability, courage, worthiness, and shame, shares ten guideposts on the power of engaging with the world from a place of worthiness</Brief>
+		<ISBN>9781592858491</ISBN>
+		<Pages>137</Pages>
+	</book>
+
+	<book>
+		<Title>Tiny Habits: The Small Changes That Change Everything</Title>
+		<Author>B.J. Fogg</Author>
+		<Brief>The world’s leading expert on habit formation shows how you can have a happier, healthier life: by starting small</Brief>
+		<ISBN>9780358003328</ISBN>
+		<Pages>320</Pages>
+	</book>
+</table-of-books>
