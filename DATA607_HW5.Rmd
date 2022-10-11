@@ -1,0 +1,103 @@
+---
+title: "DATA607_HW5"
+author: "Samane Khademi"
+date: "2022-10-12"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Link to [GitHub](https://github.com/Samane86/607_HW5)
+## Link to [Rpubs](https://rpubs.com/Samane65/954657)
+
+
+# Working with XML and JSON in R
+
+Pick three of your favorite books on one of your favorite subjects. At least one of the books should have more than one author. For each book, include the title, authors, and two or three other attributes that you find interesting.
+Take the information that you’ve selected about these three books, and separately create three files which store the book’s information in HTML (using an html table), XML, and JSON formats (e.g.“books.html”,“books.xml”, and “books.json”). To help you better understand the different file structures, I’d prefer that you create each of these files “by hand” unless you’re already very comfortable with the file formats.
+Write R code, using your packages of choice, to load the information from each of the three sources into
+separate R data frames. Are the three data frames identical?
+
+
+# Load libraries:
+
+```{r}
+library(RCurl)
+library(XML)
+library(jsonlite)
+library(dplyr)
+```
+
+
+Three files were created to meet the stated format requirements: HTML, XML, and JSON.
+
+Title
+Author(s)
+Brief
+ISBN
+Pages
+
+These files were uploaded to my corresponding GitHub repository for this course.
+
+## Load Files
+
+```{r}
+
+URLhtml <- "https://raw.githubusercontent.com/Samane86/607_HW5/main/books.html"
+URLxml <-  "https://raw.githubusercontent.com/Samane86/607_HW5/main/books.xml"
+URLjson <-   "https://raw.githubusercontent.com/Samane86/607_HW5/main/books.json"
+
+books_html <- getURL(URLhtml)
+books_xml <- getURL(URLxml)
+books_JSON <- getURL(URLjson)
+
+
+```
+
+
+## HTML Data
+
+Read in the HTML table as a dataframe:
+
+```{r}
+
+html_data <- readHTMLTable(books_html, header=TRUE)
+html_data <- as.data.frame(html_data)
+str(html_data)
+
+```
+
+
+
+
+## XML Data
+
+Read in the XML file as a dataframe:
+
+```{r}
+
+xml_data <- xmlToList(xmlParse(books_xml))
+xml_data <- data.frame(do.call(bind_rows, lapply(xml_data, data.frame, stringsAsFactors=FALSE)))
+str(xml_data)
+
+```
+
+
+
+## JSON Data
+Read in the JSON file as a dataframe:
+
+```{r}
+
+json_data <- fromJSON(books_JSON)
+json_data <- data.frame(json_data)
+str(json_data)
+
+```
+
+
+You can see that the dataframes are each different in multiple ways, not least of which are how they treat column naming, and the variables themselves. For example, the HTML table and JSON format each resulted in dataframes containing 3 observations of 5 variables, however, the XML format resulted in 6 variables for each observation. This is because of how the author variable was treated by R when reading in the XML format. Additionally, the datatypes between the different formats differ greatly; when reading in the data from the XML I specified that strings should not be treated as factors to show the difference between this call and not specifying this parameter as seen with the HTML table wherein all the variables are treated as factors rather than character strings. It would be simple to rename the columns for the tables using the  colnames() function but the structures and treatment of the variables for each table would still be different.
